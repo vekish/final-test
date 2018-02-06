@@ -76,9 +76,6 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         cell.likesLbl.text = String(post.likes.count)
         
         
-        
-        
-        
         return cell
         
     }
@@ -118,7 +115,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
     )}
     
-    @IBAction func addComment(_ sender: Any) {        
+    @IBAction func addComment(_ sender: Any) {
         print("cao moze jedan comm")
     }
     
