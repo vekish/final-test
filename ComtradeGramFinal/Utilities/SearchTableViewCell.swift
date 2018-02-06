@@ -10,7 +10,17 @@ import UIKit
 
 class SearchTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var profilePhoto: UIImageView!
+    @IBOutlet weak var profilePhoto: UIImageView!    
+    @IBOutlet weak var usernameLbl: UILabel!
+    @IBOutlet weak var locationBttn: UIButton!
+    @IBOutlet weak var userLocationLbl: UILabel!
+    @IBOutlet weak var addFriend: UIButton!
+    @IBOutlet weak var userPostImg: UIImageView!    
+    @IBOutlet weak var likeBttn: UIButton!
+    @IBOutlet weak var likesLbl: UILabel!
+    @IBOutlet weak var commentBttn: UIButton!
+    @IBOutlet weak var commentsLbl: UILabel!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
