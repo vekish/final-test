@@ -123,7 +123,7 @@
                                                         <constraint firstAttribute="height" constant="1" id="lVQ-sc-OUa"/>
                                                     </constraints>
                                                 </view>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uoh-uu-Piy">
+                                                <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uoh-uu-Piy">
                                                     <rect key="frame" x="25" y="267" width="20" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="NBL-h8-eVA"/>
@@ -217,8 +217,8 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.80000000000000004" green="0.08235294118" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" red="0.80000000000000004" green="0.08235294118" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="sUx-Ka-a2Y" firstAttribute="bottom" secondItem="3cX-9E-qYU" secondAttribute="bottom" id="2J4-bK-0oj"/>
                             <constraint firstItem="sYH-x9-IEl" firstAttribute="top" secondItem="sUx-Ka-a2Y" secondAttribute="top" id="3K4-dd-eKv"/>
@@ -272,7 +272,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <color key="selectedImageTintColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="selectedImageTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
                         <segue destination="6AU-0t-qiM" kind="relationship" relationship="viewControllers" id="Be1-lI-Ka5"/>

@@ -14,6 +14,8 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var instagramPosts : [InstagramMedia] = []
     var posts = [Post]()
     
+    //MARK: - Outlets
+    
     @IBOutlet weak var searchBar: UISearchBar!
     
     @IBOutlet weak var tableView: UITableView!
@@ -27,16 +29,18 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func viewWillAppear(_ animated: Bool) {
         self.loadPosts()
     }
-
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+    // MARK: - TableView
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-       return instagramPosts.count
+        return instagramPosts.count
     }
     
     
@@ -59,14 +63,16 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
             
         }
         
+    // MARK: - Cell organization
+        
         let post = instagramPosts[indexPath.row]
         
         cell.profilePhoto.layer.cornerRadius = (cell.profilePhoto.frame.width) / 2
-//        cell.layer.cornerRadius = 15
-        cell.layer.borderWidth = 10;
+        cell.layer.cornerRadius = 15
+        cell.layer.borderWidth = 5;
         cell.layer.borderColor = UIColor.init(red:204/255.0, green:21/255.0, blue:34/255.0, alpha: 1.0).cgColor
         
-        //cell.likeBttn.tag = indexPath.row
+        cell.likeBttn.tag = indexPath.row
         
         cell.usernameLbl.text = post.user.username
         cell.profilePhoto.downloadedFrom(url: post.user.profilePicture)
@@ -80,11 +86,11 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         cell.userPostImg.downloadedFrom(url: post.images.standardResolution.url, contentMode: .scaleAspectFill)
         //cell.contentTextView.text = post.caption?.text
         cell.likesLbl.text = (post.likes.count) == 1 ? "\(post.likes.count) like" : "\(post.likes.count) likes"
-                
+        
         return cell
         
     }
-
+    
     @IBAction func findLocation(_ sender: Any) {
         print("show location")
     }
@@ -92,6 +98,8 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBAction func addFriend(_ sender: Any) {
         print("pick me, pick me")
     }
+    
+    // MARK: - Like and unlike functionality
     
     @IBAction func addLike(_ sender: UIButton) {
         //print("do you like me?")
@@ -112,9 +120,9 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     
                 }
                 
-        
-                }, failure: { error in
-                    print(error.localizedDescription)
+                
+            }, failure: { error in
+                print(error.localizedDescription)
             })
             
             return
@@ -124,14 +132,14 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
             print("unlike, unlike")
             
             if let cell = self.tableView.cellForRow(at: IndexPath.init(row: (sender as AnyObject).tag, section: 0)) as? SearchTableViewCell {
-                cell.likesLbl.text = "\(instagramPost.likes.count - 1) likes"
+                cell.likesLbl.text = "\(instagramPost.likes.count) likes"
                 
             }
             
         }, failure: { error in
             print(error.localizedDescription)}
             
-    )}
+        )}
     
     
     @IBAction func addComment(_ sender: Any) {
@@ -153,7 +161,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         })
         
     }
-
+    
     
 }
 
