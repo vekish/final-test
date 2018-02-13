@@ -12,12 +12,10 @@ import SwiftInstagram
 class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
     var instagramPosts : [InstagramMedia] = []
-    var posts = [Post]()
     
     //MARK: - Outlets
     
     @IBOutlet weak var searchBar: UISearchBar!
-    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -30,10 +28,9 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.loadPosts()
     }
     
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
     }
     
     // MARK: - TableView
@@ -42,7 +39,6 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         return instagramPosts.count
     }
-    
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -63,29 +59,39 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
             
         }
         
-    // MARK: - Cell organization
+        // MARK: - Cell organization
         
         let post = instagramPosts[indexPath.row]
+        
+        //MARK: UserImage and Username
         
         cell.profilePhoto.layer.cornerRadius = (cell.profilePhoto.frame.width) / 2
         cell.layer.cornerRadius = 15
         cell.layer.borderWidth = 5;
         cell.layer.borderColor = UIColor.init(red:204/255.0, green:21/255.0, blue:34/255.0, alpha: 1.0).cgColor
-        
-        cell.likeBttn.tag = indexPath.row
-        
         cell.usernameLbl.text = post.user.username
         cell.profilePhoto.downloadedFrom(url: post.user.profilePicture)
+        
+        //MARK: Location
+        
         cell.userLocationLbl.text = post.location?.name
         if cell.userLocationLbl.text == nil {
             cell.locationBttn.isHidden = true
+            
         } else {
+            
             cell.locationBttn.isHidden = false
         }
         
+        //MARK: UserPostImage
+        
         cell.userPostImg.downloadedFrom(url: post.images.standardResolution.url, contentMode: .scaleAspectFill)
-        //cell.contentTextView.text = post.caption?.text
+        
         cell.likesLbl.text = (post.likes.count) == 1 ? "\(post.likes.count) like" : "\(post.likes.count) likes"
+        
+        cell.likeBttn.tag = indexPath.row
+        cell.likeBttn.isSelected = post.userHasLiked
+        
         
         return cell
         
@@ -115,32 +121,44 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
             Instagram.shared.like(media: instagramPost.id, success:{
                 print("like is done")
                 
-                if let cell = self.tableView.cellForRow(at: IndexPath.init(row: (sender as AnyObject).tag, section: 0)) as? SearchTableViewCell {
-                    cell.likesLbl.text = "\(instagramPost.likes.count + 1) likes"
-                    
-                }
                 
+                Instagram.shared.media(withId: instagramPost.id, success: { (post) in
+                    if let cell = self.tableView.cellForRow(at: IndexPath.init(row: (sender as AnyObject).tag, section: 0)) as? SearchTableViewCell {
+                        cell.likesLbl.text = "\(post.likes.count) likes"
+                        
+                    }
+                    
+                }, failure: { error in
+                    print(error.localizedDescription)
+                })
                 
             }, failure: { error in
                 print(error.localizedDescription)
             })
             
             return
-        }
-        
-        Instagram.shared.unlike(media: instagramPost.id, success:{
-            print("unlike, unlike")
             
-            if let cell = self.tableView.cellForRow(at: IndexPath.init(row: (sender as AnyObject).tag, section: 0)) as? SearchTableViewCell {
-                cell.likesLbl.text = "\(instagramPost.likes.count) likes"
+        }else{
+            
+            Instagram.shared.unlike(media: instagramPost.id, success:{
+                print("unlike, unlike")
                 
-            }
-            
-        }, failure: { error in
-            print(error.localizedDescription)}
-            
-        )}
-    
+                Instagram.shared.media(withId: instagramPost.id, success: { (post) in
+                    if let cell = self.tableView.cellForRow(at: IndexPath.init(row: (sender as AnyObject).tag, section: 0)) as? SearchTableViewCell {
+                        cell.likesLbl.text = "\(post.likes.count) likes"
+                        
+                    }
+                    
+                }, failure: { error in
+                    print(error.localizedDescription)
+                })
+                
+                
+            }, failure: { error in
+                print(error.localizedDescription)}
+                
+            )}
+    }
     
     @IBAction func addComment(_ sender: Any) {
         print("cao moze jedan comm")
@@ -161,7 +179,6 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         })
         
     }
-    
     
 }
 

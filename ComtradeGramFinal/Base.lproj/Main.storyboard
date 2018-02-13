@@ -136,17 +136,17 @@
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25 likes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="95p-Hn-yQK">
-                                                    <rect key="frame" x="55" y="267" width="60" height="20"/>
+                                                    <rect key="frame" x="55" y="267" width="80" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="13g-63-B5I"/>
-                                                        <constraint firstAttribute="width" constant="60" id="kei-PW-ACw"/>
+                                                        <constraint firstAttribute="width" constant="80" id="kei-PW-ACw"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mAX-cb-ILf">
-                                                    <rect key="frame" x="125" y="265" width="27" height="27"/>
+                                                    <rect key="frame" x="145" y="265" width="27" height="27"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="27" id="FZw-FQ-gJe"/>
                                                         <constraint firstAttribute="height" constant="27" id="J2Y-5D-W3o"/>
@@ -157,7 +157,7 @@
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5 comments" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xhh-JU-WY4">
-                                                    <rect key="frame" x="156" y="267" width="100" height="20"/>
+                                                    <rect key="frame" x="176" y="267" width="100" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="100" id="Yje-zw-67q"/>
                                                         <constraint firstAttribute="height" constant="20" id="lAX-3m-dTr"/>
